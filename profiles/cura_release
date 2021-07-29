@@ -1,5 +1,0 @@
-include(cura.jinja)
-
-[settings]
-build_type = Release
-*:build_type = Release
