@@ -1,0 +1,6 @@
+include(cura.jinja)
+
+[settings]
+build_type = Debug
+&:build_type = Debug
+*:build_type = Release
