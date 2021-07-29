@@ -1,0 +1,31 @@
+include(default)
+
+[build_requires]
+cmake/[>=3.16.2]
+{% if platform.system() == "Windows" %}
+{% raw %}
+CuraEngine:mingw_installer/1.0@conan/stable
+CuraEngine:mingw-w64/8.1
+{% endraw %}
+{% endif %}
+
+[settings]
+os = {{ {"Darwin": "Macos"}.get(platform.system(), platform.system()) }}
+os_build = {{ {"Darwin": "Macos"}.get(platform.system(), platform.system()) }}
+{% if platform.system() == "Windows" %}
+{% raw %}
+CuraEngine:compiler = gcc
+CuraEngine:compiler.version = 8.1
+CuraEngine:compiler.libcxx = libstdc++11
+CuraEngine:compiler.threads = posix
+CuraEngine:compiler.exception = seh
+{% endraw %}
+{% endif %}
+arch = x86_64
+arch_build = x86_64
+
+[options]
+
+[env]
+
+[conf]
