@@ -2,7 +2,9 @@ include(cura.jinja)
 
 [settings]
 build_type=Debug
-{% if compiler == "Visual Studio" %}
-    compiler.runtime=MD
+{% if compiler == visual_studio %}
+    compiler.runtime=MDd
 {% endif %}
+&:build_type=Debug
 *:build_type=Release
+*@ultimaker/*:Debug

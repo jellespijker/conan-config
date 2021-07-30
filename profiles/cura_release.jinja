@@ -2,7 +2,7 @@ include(cura.jinja)
 
 [settings]
 build_type=Release
-{% if compiler == "Visual Studio" %}
+{% if compiler == visual_studio %}
     compiler.runtime=MD
 {% endif %}
 *:build_type=Release
