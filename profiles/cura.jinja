@@ -14,15 +14,9 @@ os={{ {"Darwin": "Macos"}.get(platform.system(), platform.system()) }}
 os_build={{ {"Darwin": "Macos"}.get(platform.system(), platform.system()) }}
 arch=x86_64
 arch_build=x86_64
-{% if compiler == "gcc" %}
-    compiler.libcxx=libstdc++11
-{% elif compiler == "apple-clang" %}
-    compiler.libcxx=libc++
-{% endif %}
 compiler.cppstd=17
 {% if platform.system() == "Windows" %}
     {% raw %}
-	compiler.toolset=v142
     CuraEngine:compiler=gcc
     CuraEngine:compiler.version=8.1
     CuraEngine:compiler.libcxx=libstdc++11
@@ -35,12 +29,19 @@ compiler.cppstd=17
     cmake:build_type=Release
     {% endraw %}
 {% endif %}
+{% if compiler == "gcc" %}
+    compiler.libcxx=libstdc++11
+{% elif compiler == "apple-clang" %}
+    compiler.libcxx=libc++
+{% elif compiler == "Visual Studio" %}
+	compiler.toolset=v142
+{% endif %}
 [options]
 
 [env]
 
 [conf]
 tools.cmake.cmaketoolchain:find_package_prefer_config=True
-{% if compiler == visual_studio %}
+{% if compiler == "Visual Studio" %}
 	tools.microsoft.msbuild:vs_version=compiler.version
 {% endif %}

@@ -3,7 +3,7 @@ include(cura.jinja)
 [settings]
 *:build_type=Release
 *@ultimaker/*:build_type=Debug
-{% if compiler == visual_studio %}
+{% if compiler == "Visual Studio" %}
     compiler.runtime=MDd
 	Arcus:build_type=Release
 	Arcus:compiler.runtime=MD
