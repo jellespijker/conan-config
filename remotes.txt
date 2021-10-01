@@ -1,2 +1,2 @@
 ultimaker http://peer23peer.duckdns.org:8082/artifactory/api/conan/ultimaker False
-conan-center https://conan.io/center True
+conan-center https://center.conan.io True
